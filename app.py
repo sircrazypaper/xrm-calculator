@@ -3,6 +3,11 @@ import xRM_calculator
 import oly_xRM_calculator
 import pandas as pd
 
+st.set_page_config(
+    page_title="xRM Calculator",
+    page_icon="🏋️",
+)
+
 def calculator(prefix, maxReps, repValue, script):
     weight = st.number_input("Weight lifted", key=f"{prefix}_weight", min_value=0.0, step=0.25, value=40.0)
     reps = st.select_slider("Repetitions", key=f"{prefix}_reps", options=list(range(1,maxReps+1)), value=repValue)
