@@ -1,0 +1,6 @@
+[theme]
+base = "dark"
+primaryColor = "#ba6b70"             # accent: slider, active tab underline, focus outlines
+backgroundColor = "#282c33"          # the main page background
+secondaryBackgroundColor = "#3b414d" # input boxes, sidebar
+textColor = "#a2a8b3"                # normal text
