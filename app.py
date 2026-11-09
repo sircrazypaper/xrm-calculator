@@ -9,9 +9,9 @@ st.set_page_config(
 )
 
 def calculator(prefix, maxReps, repValue, script):
-    weight = st.number_input("Weight lifted", key=f"{prefix}_weight", min_value=0.0, step=0.25, value=40.0)
-    reps = st.select_slider("Repetitions", key=f"{prefix}_reps", options=list(range(1,maxReps+1)), value=repValue)
-    rir = st.select_slider("RIR", key=f"{prefix}_rir", options=[0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4], value=1)
+    weight = st.number_input("Weight lifted", key=f"{prefix}_weight", min_value=0.0, step=0.25, value=40.0, help="How much weight you lifted")
+    reps = st.select_slider("Repetitions", key=f"{prefix}_reps", options=list(range(1,maxReps+1)), value=repValue, help="How many repetitions you did with that weight")
+    rir = st.select_slider("RIR", key=f"{prefix}_rir", options=[0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4], value=1, help="How many reps in reserve you had after doing the given weight for the given number of repetitions")
 
     oneRM, sheet = script(weight, reps, rir)
 
@@ -24,7 +24,8 @@ def calculator(prefix, maxReps, repValue, script):
         {"selector": "th", "props": "text-align: center !important; font-weight: bold;"}
     ])
 
-    st.metric("Estimated 1RM:", round(oneRM, 2))
+    st.metric("Estimated 1RM:", round(oneRM, 2), help="Your estimated 1RM based on the information you gave")
+    st.markdown("**Rep max sheet**", help="This sheet shows what weight you can do at a given number of repetitions, and a given number of reps in reserve")
     st.table(styledChart)
 
 
